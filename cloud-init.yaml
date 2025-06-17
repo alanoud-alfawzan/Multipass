@@ -1,0 +1,25 @@
+# I have created this yaml file for learning purposes.
+# This file will be used with multipass to lunch a ready to use Ubuntu VM
+
+
+# these command to udate the ubuntu packages
+package_update: true
+package_upgrade: true
+
+runcmd:
+  # install Docker.io
+  - apt-get install -y docker.io
+  - systemctl enable docker
+  - systemctl start docker
+
+  # start pulling ngnix docker image
+  - docker pull nginx
+
+  # run nginix image on port 80
+  - docker run -d --name nginx-server -p 8080:80 nginx
+
+  # we need to waite for 5 mins to make sure the container up and running
+  - sleep 5
+
+  # this command only to testing
+  - curl -I http://localhost:80
