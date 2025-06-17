@@ -22,4 +22,4 @@ runcmd:
   - sleep 5
 
   # this command only to testing
-  - curl -I http://localhost:80
+  - curl -I http://localhost:8080
